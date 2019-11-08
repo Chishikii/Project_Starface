@@ -9,6 +9,7 @@ include(../Common.pri)
 TARGET = ProjectStarface
 
 SOURCES += \
-    code/sources/myscene.cpp
+    myscene.cpp
+
 HEADERS += \
-    code/headers/planet.h
+    planet.h
