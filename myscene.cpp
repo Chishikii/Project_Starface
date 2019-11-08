@@ -49,13 +49,13 @@ void SceneManager::initScenes()
     SceneSwitcher* lSwitch = new SceneSwitcher();
     Camera* cam = new Camera();
     CameraController* camController = new MouseKeyboardCameraController(cam);
-    Q_UNUSED(camController);
+    Q_UNUSED(camController)
     RenderingContext* myContext = new RenderingContext(cam);
     unsigned int myContextNr = SceneManager::instance()->addContext(myContext);
     myScene = SceneManager::instance()->addScene(initScene1());
     myScene2 = SceneManager::instance()->addScene(initScene2());
     sortedRenderer = new ScreenRenderer(myContextNr, myScene);
-    Q_UNUSED(lSwitch);
+    Q_UNUSED(lSwitch)
 
     //Vorsicht: Die Szene muss initialisiert sein, bevor das Fenster verändert wird (Fullscreen)
     SceneManager::instance()->setActiveScene(myScene);
