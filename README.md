@@ -1,3 +1,3 @@
-# Project_Starface
+# Project Starface
 
 Best thing ever :)
