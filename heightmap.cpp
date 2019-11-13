@@ -8,17 +8,17 @@ Heightmap::Heightmap(){
 Heightmap::Heightmap(int sizeX, int sizeY){
     this->sizeX = sizeX;
     this->sizeY = sizeY;
-    map = new QImage(sizeX, sizeY, QImage::Format_Grayscale8);
+    map = new QImage(sizeX, sizeY, QImage::Format_RGB32);
 }
 
 bool Heightmap::createMap(){
    if (map == nullptr) return false;
 
    //create map
-   for(int y = 0; y < sizeY - 1; y++){
-       for(int x = 0; x < sizeX - 1; x++){
+   for(int y = 1; y < sizeY + 1; y++){
+       for(int x = 1; x < sizeX + 1; x++){
            QRgb value;
-           value = qRgb(x, y,x + y);
+           value = qRgb(x, y, x+y);
            map->setPixel(x, y, value);
        }
    }
@@ -26,6 +26,5 @@ bool Heightmap::createMap(){
 }
 
 bool Heightmap::saveMap(){
-   map->save("heightmap.png","png",-1);
-   return true;
+   return map->save(QDir::homePath() + QString("/Desktop/test2.png"));
 }

@@ -3,6 +3,7 @@
 
 #include <QImage>
 #include <QFile>
+#include <QDir>
 
 class Heightmap {
 public:

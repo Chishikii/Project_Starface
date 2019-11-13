@@ -10,14 +10,16 @@
 #include "shadermanager.h"
 #include "heightmap.h"
 
+#include <QDebug>
+
 Node *initScene1();
 
 void SceneManager::initScenes()
 {
     Heightmap *map = new Heightmap(100, 100);
-    bool test = map->createMap();
+    map->createMap();
     map->saveMap();
-    printf("%d", test);
+
     Camera* cam = new Camera();
     CameraController* camController = new MouseKeyboardCameraController(cam);
     Q_UNUSED(camController)
@@ -36,8 +38,6 @@ Node *initScene1()
 {
     //Projectpath
     QString path(SRCDIR);
-
-
     Drawable *model = new Drawable(new TriangleMesh(":/modelObjects/fighter.obj"));
 
     Texture* t;
