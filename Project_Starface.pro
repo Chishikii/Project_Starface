@@ -9,10 +9,11 @@ include(../Common.pri)
 TARGET = ProjectStarface
 
 SOURCES += \
+    heightmap.cpp \
     myscene.cpp
 
 HEADERS += \
-    planet.h
+    heightmap.h
 
 RESOURCES += \
     modelTextures/modeltextures.qrc \

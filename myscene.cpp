@@ -4,35 +4,31 @@
 #include "trianglemesh.h"
 #include "texture.h"
 #include "shader.h"
-#include "listener.h"
 #include "transformation.h"
 #include "keyboardtransformation.h"
-#include "planet.h"
 #include "color.h"
-#include "audioengine.h"
-#include "soundsource.h"
 #include "shadermanager.h"
-#include "efx-presets.h"
+#include "heightmap.h"
 
 Node *initScene1();
-Node *initScene2();
-
-ScreenRenderer* sortedRenderer;
-ScreenRenderer* preOrderRenderer;
-unsigned int myScene;
 
 void SceneManager::initScenes()
 {
+    Heightmap *map = new Heightmap(100, 100);
+    bool test = map->createMap();
+    map->saveMap();
+    printf("%d", test);
     Camera* cam = new Camera();
     CameraController* camController = new MouseKeyboardCameraController(cam);
     Q_UNUSED(camController)
     RenderingContext* myContext = new RenderingContext(cam);
     unsigned int myContextNr = SceneManager::instance()->addContext(myContext);
-    myScene = SceneManager::instance()->addScene(initScene1());
-    sortedRenderer = new ScreenRenderer(myContextNr, myScene);
+    unsigned int myScene = SceneManager::instance()->addScene(initScene1());
+    ScreenRenderer *myRenderer = new ScreenRenderer(myContextNr, myScene);
 
     //Vorsicht: Die Szene muss initialisiert sein, bevor das Fenster verändert wird (Fullscreen)
     SceneManager::instance()->setActiveScene(myScene);
+    SceneManager::instance()->setActiveContext(myContextNr);
     //SceneManager::instance()->setFullScreen();
 }
 
@@ -41,7 +37,8 @@ Node *initScene1()
     //Projectpath
     QString path(SRCDIR);
 
-    Drawable *model = new Drawable(new TriangleMesh(path+QString("/modelstextures/Fighter.obj")));
+
+    Drawable *model = new Drawable(new TriangleMesh(":/modelObjects/fighter.obj"));
 
     Texture* t;
     Shader* s = ShaderManager::getShader(path + QString("/shader/texture.vert"), path + QString("/shader/texture.frag"));
@@ -56,7 +53,7 @@ Node *initScene1()
 
     //Texturen laden
     t = model->getProperty<Texture>();
-    t->loadPicture(path + QString("/modelstextures/Fighter_TEX.png"));
+    t->loadPicture(":/modelTextures/fighter_texture.png");
 
     //Shader fuer Textur setzen
     model->setShader(s);
