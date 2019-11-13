@@ -13,3 +13,5 @@ SOURCES += \
 
 HEADERS += \
     planet.h
+
+RESOURCES += \
