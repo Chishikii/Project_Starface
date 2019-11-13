@@ -16,7 +16,7 @@ Node *initScene1();
 
 void SceneManager::initScenes()
 {
-    Heightmap *map = new Heightmap(100, 100);
+    Heightmap *map = new Heightmap(400, 400);
     map->createMap();
     map->saveMap();
 

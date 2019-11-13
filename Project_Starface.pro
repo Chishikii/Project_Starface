@@ -10,10 +10,12 @@ TARGET = ProjectStarface
 
 SOURCES += \
     heightmap.cpp \
-    myscene.cpp
+    myscene.cpp \
+    simplexnoise.cpp
 
 HEADERS += \
-    heightmap.h
+    heightmap.h \
+    simplexnoise.h
 
 RESOURCES += \
     modelTextures/modeltextures.qrc \

@@ -4,6 +4,7 @@
 #include <QImage>
 #include <QFile>
 #include <QDir>
+#include "simplexnoise.h"
 
 class Heightmap {
 public:
