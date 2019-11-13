@@ -71,3 +71,4 @@ Node *initScene1()
     posNode->addChild(modelNode);
     return(root);
 }
+
