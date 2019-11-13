@@ -1,0 +1,5 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/modelTextures">
+    <file>fighter_texture.png</file>
+</qresource>
+</RCC>

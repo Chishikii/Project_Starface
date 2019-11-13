@@ -15,3 +15,5 @@ HEADERS += \
     planet.h
 
 RESOURCES += \
+    modeltextures.qrc \
+    modelobjects.qrc
