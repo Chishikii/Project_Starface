@@ -1,10 +1,9 @@
 #include "terrain.h"
 
 
-Terrain::Terrain(Heightmap heightmap){
-    this->heightmap = new QImage();
-    mesh = heightmap.mesh;
-    meshSize = heightmap.mapSize;
+Terrain::Terrain(Heightmap *heightmap){
+    this->heightmap = heightmap;
+    mesh = heightmap->mesh;
 }
 
 void Terrain::fillVertices(QVector<QVector4D> &vertices){
@@ -23,6 +22,12 @@ void Terrain::fillColors(QVector<QVector4D> &colors){
 void Terrain::fillNormals(QVector<QVector3D> &normals, QVector<QVector4D> &vertices){
     for(int i = 0; i < mesh->length();i++){
         normals.append(QVector3D(0,1,0));
+    }
+
+    for(int y = 0; y < heightmap->mapSize;y++){
+        for(int x = 0; x < heightmap->mapSize;y++){
+            //todo normals
+        }
     }
 }
 

@@ -25,6 +25,8 @@ protected:
     bool createMap();
     bool saveMap();
 private:
+    //noise
+    SimplexNoise *noise;
     //base values: f= 0.01, a = 1, lac = 2, pers = 0.5
     float frequency = 0.02;     //Frequency ("width") of the first octave of noise (default to 1.0)
     float amplitude = 1.5;      //Amplitude ("height") of the first octave of noise (default to 1.0)

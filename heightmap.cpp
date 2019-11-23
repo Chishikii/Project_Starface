@@ -8,26 +8,33 @@ Heightmap::Heightmap(){
 }
 Heightmap::Heightmap(int size, int heightFactor, int strechFactor){
     Heightmap();
+    noise = new SimplexNoise(frequency,amplitude,lacunarity,persistence);
+
     map = new QImage(size, size, QImage::Format_RGB32);
     mesh = new QVector<QVector4D>(size * size * 6);
+
     mapSize = size;
+
+    //createMap();
+    //saveMap();
     createMeshArray();
+    //factor fo the mesh
     height = heightFactor;
     factor = strechFactor;
 }
 float Heightmap::evaluateNoise(int x, int y){
 
-    SimplexNoise noise(frequency,amplitude,lacunarity,persistence);
     float noiseValue = 0;
 
     //evaluate Noise at position x,y and determine gray value
     //full integer position gives 0 so take percantage of progress
-    noiseValue = noise.fractal(5,x,y);
+    noiseValue = noise->fractal(5,x,y);
     //Value returned is between -1 and 1
     noiseValue = (noiseValue + 1)*0.5f;
 
     return noiseValue;
 }
+//function to create a triangle array for the mesh
 void Heightmap::createMeshArray(){
     //vertex location on the map
     if(mapSize == 0) return;
@@ -50,11 +57,10 @@ void Heightmap::createMeshArray(){
     }
 }
 
+//functions to create and save a testmap for the noise
 bool Heightmap::createMap(){
    if (map == nullptr) return false;
 
-
-   SimplexNoise noise(frequency,amplitude,lacunarity,persistence);
    float noiseValue = 0, gray = 0;
 
 
@@ -62,13 +68,8 @@ bool Heightmap::createMap(){
    for(int y = 0; y < map->height(); y++){
        for(int x = 0; x < map->width(); x++){
 
-           //evaluate Noise at position x,y and determine gray value
-           //full integer position gives 0 so take percantage of progress
-           noiseValue = noise.fractal(5,x,y);
-           //Value returned is between -1 and 1
-           noiseValue = (noiseValue + 1)*0.5f;
 
-           gray = qGray((int)(255.0 * noiseValue),(int)(255.0 * noiseValue),(int)(255.0 * noiseValue));
+           gray = qGray((int)(255.0 * evaluateNoise(x,y)),(int)(255.0 * evaluateNoise(x,y)),(int)(255.0 * evaluateNoise(x,y)));
 
            //setting pixels to grayvalue
            map->setPixelColor(QPoint(x,y),QColor(gray,gray,gray).rgba());
