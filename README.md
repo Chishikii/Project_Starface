@@ -7,12 +7,15 @@ Project for Computergraphics HS-Kempten
 Text filler for now
 
 ## TODO
-- [x] Add Terrain Class that utilized the Heightmap (Siehe Beispiel Heightmap)
-- [ ] Procedual Terrain
 - [ ] Add primitive controls for the fightermodel
 - [ ] Create shader for the generated Terrain
+- [ ] Collision detection
+- [ ] Ground object
+- [ ] Destroy object for points
+
+- [x] Add Terrain Class that utilized the Heightmap (Siehe Beispiel Heightmap)
+- [ ] Procedual Terrain
 - [ ] Some UI
-- [ ] Collision detection (Bullet?)
 
 ## Authors
 
