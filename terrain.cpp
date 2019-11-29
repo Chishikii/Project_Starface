@@ -20,17 +20,20 @@ void Terrain::fillColors(QVector<QVector4D> &colors){
 }
 
 void Terrain::fillNormals(QVector<QVector3D> &normals, QVector<QVector4D> &vertices){
+    normals.clear();
     for(int i = 0; i < mesh->length();i++){
         normals.append(QVector3D(0,1,0));
     }
-
+/*
     for(int y = 0; y < heightmap->mapSize;y++){
         for(int x = 0; x < heightmap->mapSize;y++){
             //todo normals
+
         }
     }
+*/
 }
 
 void Terrain::render(Drawable *d){
-    glFunctions->glDrawArrays(GL_TRIANGLES,0,6*(meshSize)*(meshSize));
+    glFunctions->glDrawArrays(GL_TRIANGLES,0,mesh->length());
 }
