@@ -7,7 +7,7 @@
 class Terrain : public Geometry
 {
 public:
-    Terrain(Heightmap *hieghtmap);
+    Terrain(Heightmap *heightmap);
 protected:
     virtual void fillVertices(QVector<QVector4D> &vertices) override;
     virtual void fillColors(QVector<QVector4D> &colors) override;

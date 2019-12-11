@@ -42,7 +42,7 @@ Node *initScene1()
 
     //Terrain
     Heightmap *map = new Heightmap(terrainSize,100,10);
-    Terrain *terrain = new Terrain(*map);
+    Terrain *terrain = new Terrain(map);
 
     //FighterObj
     Drawable *model = new Drawable(new TriangleMesh(":/modelObjects/fighter.obj"));

@@ -15,8 +15,9 @@ Heightmap::Heightmap(int size, int heightFactor, int strechFactor){
 
     mapSize = size;
 
-    //createMap();
-    //saveMap();
+    //create and save map for testing
+    createMap();
+    saveMap();
     createMeshArray();
     //factor fo the mesh
     height = heightFactor;
@@ -61,7 +62,7 @@ void Heightmap::createMeshArray(){
 bool Heightmap::createMap(){
    if (map == nullptr) return false;
 
-   float noiseValue = 0, gray = 0;
+   float gray = 0;
 
 
    //create map by iterating through each pixel
