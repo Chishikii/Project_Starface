@@ -10,5 +10,5 @@ void main()
         vec4 textureFrag = texture(textureMap, texCoords);
         fragColor = vec4(textureFrag.rgb, textureFrag.a);
     }
-//    fragColor = vec4(texCoords.x,texCoords.y,0.,1.);
+//   fragColor = vec4(texCoords.x,texCoords.y,0.,1.);
 }

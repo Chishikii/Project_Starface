@@ -38,10 +38,10 @@ Node *initScene1()
     //Projectpath
     QString path(SRCDIR);
 
-    int terrainSize = 100;
+    int terrainSize = 200;
 
     //Terrain
-    Heightmap *map = new Heightmap(terrainSize,100,10);
+    Heightmap *map = new Heightmap(terrainSize,10,1);
     Terrain *terrain = new Terrain(map);
 
     //FighterObj
@@ -51,6 +51,7 @@ Node *initScene1()
 
     //shader
     Shader* s = ShaderManager::getShader(path + QString("/shader/texture.vert"), path + QString("/shader/texture.frag"));
+    Shader* b = ShaderManager::getShader(path + QString("/shader/heightmapSimple.vert"),path + QString("/shader/heightmapSimple.frag"));
 
     //Temp transform for position
     Transformation *pos = new Transformation();
@@ -75,6 +76,7 @@ Node *initScene1()
 
     //Shader fuer Textur setzen
     model->setShader(s);
+    terrainModel->setShader(b);
     //terrainModel->setShader(s);
 
     //temp position

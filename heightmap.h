@@ -15,6 +15,9 @@ public:
     //vector with all the vertices
     QVector<QVector4D> *mesh;
     int mapSize;
+    //attributes for the mesh
+    int height = 100;
+    int factor = 10;
 
 protected:
     //creates mesh with attributes and noise
@@ -32,9 +35,6 @@ private:
     float amplitude = 1.5;      //Amplitude ("height") of the first octave of noise (default to 1.0)
     float lacunarity = 2;     //Lacunarity specifies the frequency multiplier between successive octaves (default to 2.0).
     float persistence = 0.5;    //Persistence is the loss of amplitude between successive octaves (usually 1/lacunarity)
-    //attributes for the mesh
-    int height = 100;
-    int factor = 10;
     //testing image
     QImage *map;
 };

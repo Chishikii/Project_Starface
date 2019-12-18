@@ -2,5 +2,7 @@
     <qresource prefix="/shader">
         <file>texture.vert</file>
         <file>texture.frag</file>
+        <file>heightmapSimple.vert</file>
+        <file>heightmapSimple.frag</file>
     </qresource>
 </RCC>
