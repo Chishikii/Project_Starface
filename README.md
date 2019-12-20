@@ -7,10 +7,12 @@ Project for Computergraphics HS-Kempten
 Text filler for now
 
 ## TODO
-- [ ] Add primitive controls for the fightermodel
-- [ ] Create shader for the generated Terrain
-- [ ] Collision detection
-- [ ] Ground object
+- [x] Add primitive controls for the fightermodel
+- [ ] Improve Controls
+- [x] Create simple shader for the generated Terrain (really bad atm)
+- [x] A decent Shader for terrain (maybe Fighter too)
+- [x] Collision detection (needs more testing, works for now)
+- [ ] Ground objects, aka turrets
 - [ ] Destroy object for points
 
 - [x] Add Terrain Class that utilized the Heightmap (Siehe Beispiel Heightmap)
