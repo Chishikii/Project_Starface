@@ -4,7 +4,6 @@ Heightmap::Heightmap(){
     map = nullptr;
     mesh = nullptr;
     mapSize = 0;
-    createMeshArray();
 }
 Heightmap::Heightmap(int size, int heightFactor, int strechFactor){
     Heightmap();
@@ -14,14 +13,14 @@ Heightmap::Heightmap(int size, int heightFactor, int strechFactor){
     mesh = new QVector<QVector4D>(size * size * 6);
 
     mapSize = size;
+    this->height = heightFactor;
+    this->factor = strechFactor;
 
     //create and save map for testing
     createMap();
     saveMap();
     createMeshArray();
     //factor fo the mesh
-    height = heightFactor;
-    factor = strechFactor;
 }
 float Heightmap::evaluateNoise(int x, int y){
 

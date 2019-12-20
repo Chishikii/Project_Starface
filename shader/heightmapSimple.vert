@@ -17,12 +17,12 @@ void main()
 {
     //calculate vertex color
     //this should be definable via uniforms
-    if(vertexPosition.y < 50){
+    if(vertexPosition.y < 100){
         outputColor = vec4(0.0, 0.0, 120.0, 1.0);
-        vertexPosNew.y = 50.0;
+        vertexPosNew.y = 90.0;
 
     }
-    else if(vertexPosition.y < 80){
+    else if(vertexPosition.y < 165){
         outputColor = vec4(0.0, 120.0, 0.0, 1.0);
     }
     else {

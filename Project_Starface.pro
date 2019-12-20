@@ -9,12 +9,14 @@ include(../Common.pri)
 TARGET = ProjectStarface
 
 SOURCES += \
+    charactercontroller.cpp \
     heightmap.cpp \
     myscene.cpp \
     simplexnoise.cpp \
     terrain.cpp
 
 HEADERS += \
+    charactercontroller.h \
     heightmap.h \
     simplexnoise.h \
     terrain.h
@@ -23,3 +25,5 @@ RESOURCES += \
     modelTextures/modeltextures.qrc \
     modelObjects/modelobjects.qrc \
     shader/shader.qrc
+
+DISTFILES +=
