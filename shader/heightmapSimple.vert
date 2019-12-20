@@ -20,6 +20,7 @@ void main()
     if(vertexPosition.y < 50){
         outputColor = vec4(0.0, 0.0, 120.0, 1.0);
         vertexPosNew.y = 50.0;
+
     }
     else if(vertexPosition.y < 80){
         outputColor = vec4(0.0, 120.0, 0.0, 1.0);
