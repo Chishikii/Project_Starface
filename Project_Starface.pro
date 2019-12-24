@@ -12,12 +12,14 @@ SOURCES += \
     charactercontroller.cpp \
     heightmap.cpp \
     myscene.cpp \
+    player.cpp \
     simplexnoise.cpp \
     terrain.cpp
 
 HEADERS += \
     charactercontroller.h \
     heightmap.h \
+    player.h \
     simplexnoise.h \
     terrain.h
 
