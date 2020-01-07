@@ -1,8 +1,11 @@
 <RCC>
     <qresource prefix="/shader">
+        <file>common.vert.inc</file>
         <file>texture.vert</file>
         <file>texture.frag</file>
         <file>heightmapSimple.vert</file>
         <file>heightmapSimple.frag</file>
+        <file>water.vert</file>
+        <file>water.frag</file>
     </qresource>
 </RCC>
