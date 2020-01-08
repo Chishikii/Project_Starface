@@ -19,6 +19,7 @@
 #include "modeltransformation.h"
 #include "simplesphere.h"
 
+
 #include "sunlight.h"
 #include <QDebug>
 
@@ -102,6 +103,10 @@ Node *initScene1()
     Transformation *MenuPos= new Transformation();
 
     MenuPos->rotate(90,QVector3D(1,0,0));
+    MenuPos->translate(0.0,0.0,-16.0);
+    MenuPos->scale(3.9,3.9,3.9);
+
+
 
     //watersurface->translate(0.0,0.0,-50);
     Node *root = new Node();
@@ -175,6 +180,23 @@ Node *initScene2()
     root->addChild(new Node(playerObj->returnPlayerDrawable()));
     new CharacterController(playerObj->returnPlayerCam(),playerObj->returnModelTransformation());
 
+    //RingCourse hinzufügen
+    Drawable *RingCourse = new Drawable(new TriangleMesh(":/modelObjects/RingCourse.obj"));
+
+    Texture *t = RingCourse->getProperty<Texture>();
+    t->loadPicture(":/modelTextures/RingCourse.png");
+    RingCourse->setShader(s);
+
+    Transformation *RingCoursePos= new Transformation();
+
+    RingCoursePos->scale(5.0,5.0,5.0);
+
+
+    Node *RingCourseNode = new Node(RingCourse);
+    Node *RingCoursePosNode = new Node(RingCoursePos);
+
+
+
     //Shader fuer Textur setzen
     //v_fighterModel->setShader(s);
     terrainModel->setShader(b);
@@ -186,6 +208,8 @@ Node *initScene2()
     // Baum aufbauen
 
     root->addChild(transformationTerrainNode);
+    root->addChild(RingCoursePosNode);
+    RingCoursePosNode->addChild(RingCourseNode);
     /*root->addChild(watersurfaceNode);
     watersurfaceNode->addChild(waterNode);*/
 

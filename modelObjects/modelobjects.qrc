@@ -4,5 +4,7 @@
     <file>fighterRot.obj</file>
     <file>MainMenu.obj</file>
     <file>MainMenu2.obj</file>
+    <file>RingCourse.obj</file>
+
 </qresource>
 </RCC>

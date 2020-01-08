@@ -2,5 +2,7 @@
 <qresource prefix="/modelTextures">
     <file>fighter_texture.png</file>
     <file>StartMenu.png</file>
+    <file>RingCourse.png</file>
+
 </qresource>
 </RCC>
