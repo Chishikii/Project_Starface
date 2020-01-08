@@ -56,8 +56,6 @@ void SceneManager::initScenes()
     unsigned int myContextNr = SceneManager::instance()->addContext(myContext);
     unsigned int myScene = SceneManager::instance()->addScene(initScene1());*/
 
-
-
     SceneSwitcher* lSwitch = new SceneSwitcher();
     PhysicAccessableCamera* cam = new PhysicAccessableCamera();
     cam->setXAngleTripod(30.f);
@@ -66,11 +64,11 @@ void SceneManager::initScenes()
     unsigned int myContextNr = SceneManager::instance()->addContext(myContext);
     myScene1 = SceneManager::instance()->addScene(initScene1());
     myScene2 = SceneManager::instance()->addScene(initScene2());
-    sortedRenderer = new ScreenRenderer(myContextNr, myScene2);
+    sortedRenderer = new ScreenRenderer(myContextNr, myScene1);
     Q_UNUSED(lSwitch);
 
     //Vorsicht: Die Szene muss initialisiert sein, bevor das Fenster verändert wird (Fullscreen)
-    SceneManager::instance()->setActiveScene(myScene2);
+    SceneManager::instance()->setActiveScene(myScene1);
     SceneManager::instance()->setActiveContext(myContextNr);
     //SceneManager::instance()->setFullScreen();
 
