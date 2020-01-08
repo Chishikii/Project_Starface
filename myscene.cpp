@@ -84,12 +84,14 @@ void SceneManager::initScenes()
 
 Node *initScene1()
 {
+    QString path(SRCDIR);
     //    Objekte anlegen
 
     /*Plane *StartMenu = new Plane(100,100);
     Texture *t = StartMenu->getProperty<Texture>();
     t->loadPicture(":/modelTextures/fighter_texture.png");*/
 
+    Shader* s = ShaderManager::getShader(path + QString("/shader/texture.vert"), path + QString("/shader/texture.frag"));
     //Drawable *StartMenu = new Drawable(new TriangleMesh(":/modelObjects/fighterRot.obj"));
     Drawable *StartMenu = new Drawable(new TriangleMesh(":/modelObjects/MainMenu2.obj"));
     StartMenu->setStaticGeometry(false);
@@ -97,11 +99,11 @@ Node *initScene1()
     Texture *t = StartMenu->getProperty<Texture>();
     //t->loadPicture(":/modelTextures/fighter_texture.png");
     t->loadPicture(":/modelTextures/StartMenu.png");
-
+    StartMenu->setShader(s);
 
     Transformation *MenuPos= new Transformation();
 
-    MenuPos->rotate(0.0,90.0,0.0,0.0);
+    MenuPos->rotate(90,QVector3D(1,0,0));
 
     //watersurface->translate(0.0,0.0,-50);
     Node *root = new Node();
@@ -111,17 +113,7 @@ Node *initScene1()
     root->addChild(MenuPosNode);
     MenuPosNode->addChild(StartMenuNode);
 
-
-
-
-
-
-            //Szenengraph aufbauen
-
-
-
-
-        return(root);
+    return(root);
 }
 
 

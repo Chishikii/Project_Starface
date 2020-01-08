@@ -35,7 +35,7 @@ void Terrain::render(Drawable *d){
     glFunctions->glDrawArrays(GL_TRIANGLES,0,mesh->length());
 }
 
-//function to calculate normals with newells Algorithm
+//!function to calculate normals with newells Algorithm
 QVector3D Terrain::newellNormals(QVector<QVector3D> inputVertices)
 {
     QVector3D out;

@@ -8,5 +8,4 @@ void main()
         mat3 m = mat3(eins,zwei,drei); //major column order
         fragColor = vec4(m*vec3(1.0,0.0,0.0),1.0);
         fragColor = vec4(1.,0.,0.,1.);
-
 }

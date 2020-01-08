@@ -2,5 +2,7 @@
 <qresource prefix="/modelObjects">
     <file>fighter.obj</file>
     <file>fighterRot.obj</file>
+    <file>MainMenu.obj</file>
+    <file>MainMenu2.obj</file>
 </qresource>
 </RCC>
