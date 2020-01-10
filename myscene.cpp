@@ -18,6 +18,7 @@
 #include "physicaccessablecamera.h"
 #include "modeltransformation.h"
 #include "simplesphere.h"
+#include "simplecube.h"
 
 
 #include "sunlight.h"
@@ -60,7 +61,7 @@ void SceneManager::initScenes()
     SceneSwitcher* lSwitch = new SceneSwitcher();
     PhysicAccessableCamera* cam = new PhysicAccessableCamera();
     cam->setXAngleTripod(30.f);
-    cam->setFarPlane(5000.f);
+    cam->setFarPlane(10000.f);
     RenderingContext* myContext = new RenderingContext(cam);
     unsigned int myContextNr = SceneManager::instance()->addContext(myContext);
     myScene1 = SceneManager::instance()->addScene(initScene1());
@@ -145,11 +146,16 @@ Node *initScene2()
     Node *waterNode = new Node(water);
     Node *watersurfaceNode = new Node(watersurface);*/
 
-
+    Texture *te = new Texture(path + QString("/cubemap_miramar"));
     //shader
     Shader* s = ShaderManager::getShader(path + QString("/shader/texture.vert"), path + QString("/shader/texture.frag"));
     Shader* b = ShaderManager::getShader(path + QString("/shader/heightmapSimple.vert"),path + QString("/shader/heightmapSimple.frag"));
+    Shader* skyBoxShader = ShaderManager::getShader(path + QString("/shader/skybox.vert"), path + QString("/shader/texturecube.frag"));
 
+
+    Drawable *back = new Drawable(new SimpleCube(5000.));
+    back->setProperty<Texture>(te);
+    back->setShader(skyBoxShader);
     // Nodes anlegen
     Node *root = new Node();
 
@@ -178,7 +184,7 @@ Node *initScene2()
     //create and add player
     Player* playerObj = new Player(QString(":/modelObjects/fighterRot.obj"),QString(":/modelTextures/fighter_texture.png"),s,v_PhysicEngine);
     root->addChild(new Node(playerObj->returnPlayerDrawable()));
-    new CharacterController(playerObj->returnPlayerCam(),playerObj->returnModelTransformation());
+    new CharacterController(playerObj);
 
     //RingCourse hinzufügen
     Drawable *RingCourse = new Drawable(new TriangleMesh(":/modelObjects/RingCourse.obj"));
@@ -197,18 +203,13 @@ Node *initScene2()
 
 
 
-    //Shader fuer Textur setzen
-    //v_fighterModel->setShader(s);
     terrainModel->setShader(b);
-    //terrainModel->setShader(s);
-
-    //posTerrain->translate(-terrainSize*10/2,-100,-terrainSize*10);
-    //posTerrain->rotate(-20,QVector3D(1,0,0));
 
     // Baum aufbauen
 
     root->addChild(transformationTerrainNode);
     root->addChild(RingCoursePosNode);
+    root->addChild(new Node(back));
     RingCoursePosNode->addChild(RingCourseNode);
     /*root->addChild(watersurfaceNode);
     watersurfaceNode->addChild(waterNode);*/

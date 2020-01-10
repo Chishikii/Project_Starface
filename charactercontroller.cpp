@@ -1,10 +1,11 @@
 #include "charactercontroller.h"
 #include "inputregistry.h"
 
-CharacterController::CharacterController(DynamicCharacterWithCam* character, ModelTransformation* characterTransformation) : IdleObserver()
+CharacterController::CharacterController(Player* playerCharacter) : IdleObserver()
 {
-    m_Character = character;
     m_Timer.restart();
+    this->playerCharacter = playerCharacter;
+    v_PlayerPhysicsObject = playerCharacter->returnPlayerPhysObject();
 }
 
 void CharacterController::doIt()
@@ -13,6 +14,7 @@ void CharacterController::doIt()
 
     //flag for direction
     unsigned long long v_MovementFlag = 0;
+    QMatrix4x4 modelMatrix = v_PlayerPhysicsObject->getEngineModelMatrix();
 
     KeyboardInput* keyInput = InputRegistry::getInstance().getKeyboardInput();
 
@@ -34,8 +36,11 @@ void CharacterController::doIt()
         v_MovementFlag |= MovementFlag::SlowTurn;
         v_MovementFlag |= MovementFlag::TurnRight;
     }
-
+    if (keyInput->isKeyPressed('q'))
+    {
+        modelMatrix.rotate(10,QVector3D(0,0,1));
+    }
 
     //character in entsprechende richtungen bewegen
-    m_Character->moveCharacter(time, v_MovementFlag);
+    playerCharacter->returnPlayerCam()->moveCharacter(time, v_MovementFlag);
 }

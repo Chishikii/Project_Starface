@@ -9,6 +9,7 @@ Player::Player()
     t_PlayerTransformation = Q_NULLPTR;
     v_PlayerPhyObjConstInfo = Q_NULLPTR;
     v_PhysicEngine = Q_NULLPTR;
+    v_PlayerPhysicObject = Q_NULLPTR;
 }
 
 Player::Player(QString playerMeshObjPath, QString playerTexturePath, Shader* textureShader, PhysicEngine* physEngine){
@@ -41,6 +42,8 @@ Player::Player(QString playerMeshObjPath, QString playerTexturePath, Shader* tex
     v_PlayerModel->getPhysicObject()->setGravity(QVector3D(0.f,0.f,0.f));
     v_PlayerModel->getPhysicObject()->setPhysicState(PhysicState::Dynamic);
     v_PlayerModel->getPhysicObject()->setPhysicType(PhysicType::Player);
+
+    v_PlayerPhysicObject = v_PlayerModel->getPhysicObject();
 }
 
 Drawable* Player::returnPlayerDrawable(){
@@ -53,6 +56,10 @@ DynamicCharacterWithCam* Player::returnPlayerCam(){
 
 ModelTransformation* Player::returnModelTransformation(){
     return t_PlayerTransformation;
+}
+
+PhysicObject* Player::returnPlayerPhysObject(){
+    return v_PlayerPhysicObject;
 }
 
 

@@ -7,5 +7,7 @@
         <file>heightmapSimple.frag</file>
         <file>water.vert</file>
         <file>water.frag</file>
+        <file>texturecube.frag</file>
+        <file>skybox.vert</file>
     </qresource>
 </RCC>

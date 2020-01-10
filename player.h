@@ -22,6 +22,8 @@ public:
     DynamicCharacterWithCam* returnPlayerCam();
     //!return the players ModelTransformation
     ModelTransformation* returnModelTransformation();
+    //!return the players physics Object
+    PhysicObject* returnPlayerPhysObject();
 private:
     //!PlayerModel currently only Fighter
     Drawable* v_PlayerModel;
@@ -39,6 +41,8 @@ private:
     PhysicEngine* v_PhysicEngine;
     //!
     DynamicCharacterWithCam* v_CharacterCam;
+    //!Reference to the physic object for movement
+    PhysicObject* v_PlayerPhysicObject;
 };
 
 #endif // PLAYER_H

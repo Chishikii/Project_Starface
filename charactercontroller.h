@@ -4,20 +4,19 @@
 #include "idleobserver.h"
 #include "physics.h"
 #include "modeltransformation.h"
+#include "player.h"
 #include <QElapsedTimer>
 
 //Class to control character
 class CharacterController : public IdleObserver
 {
 public:
-    CharacterController(DynamicCharacterWithCam* character, ModelTransformation* characterTransformation);
+    CharacterController(Player* playerCharacter);
     void doIt();
 
 private:
-    DynamicCharacterWithCam* m_Character;
-    ModelTransformation* m_CharacterTransformation;
-
-    //better deltatime
+    Player* playerCharacter;
+    PhysicObject* v_PlayerPhysicsObject;
     QElapsedTimer m_Timer;
 };
 
