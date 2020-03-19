@@ -3,7 +3,7 @@
 Project for Computergraphics HS-Kempten
 
 ## Video Representation
-    A Video of the first Prototype can be found [here](https://www.youtube.com/watch?v=4GtNpgPAqqw)
+A Video of the first Prototype can be found [here](https://www.youtube.com/watch?v=4GtNpgPAqqw)
 
 ## Authors
 
